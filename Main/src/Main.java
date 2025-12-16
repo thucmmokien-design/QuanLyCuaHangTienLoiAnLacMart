@@ -10,6 +10,7 @@ public class Main {
         frame.setContentPane(login.getjpanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setLocationRelativeTo((Component)null);
         frame.setVisible(true);
     }
 }

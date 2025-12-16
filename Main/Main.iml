@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="jdk" jdkName="openjdk-25" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="mssql-jdbc-13.2.1.jre11" level="project" />
+    <orderEntry type="library" name="x64" level="project" />
   </component>
 </module>

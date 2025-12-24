@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class TaiKhoanDao {
-    public TaiKhoanDao() {}
-    public boolean checkTaiKhoan(String usename, String password) {
-        String sql = "SELECT * FROM TaiKhoan WHERE username = ? AND password = ?";
+public class QuanLy {
+    public QuanLy() {}
+    public boolean LoginAdmin(String usename, String password) {
+        String sql = "SELECT * FROM QuanLy WHERE username = ? AND password = ?";
         try{
             datacofig connext = new datacofig();
             Connection conn = connext.getConnection();

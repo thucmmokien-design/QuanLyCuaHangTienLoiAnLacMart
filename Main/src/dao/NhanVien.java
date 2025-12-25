@@ -15,7 +15,7 @@ public class NhanVien {
         };
     }
     public ResultSet LayThongTinNhanVien() {
-        String sql = "SELECT username, password, hoten, sodienthoai, ngaysinh FROM NhanVien";
+        String sql = "SELECT maNV, username, password, hoten, gioitinh, sodienthoai, ngaysinh FROM NhanVien";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             return ps.executeQuery();
@@ -24,16 +24,17 @@ public class NhanVien {
         }
         return null;
     }
-    public Boolean ThemThongTinNhanVien(String username, String password, String hoten, String sodienthoai, String ngaysinh) {
-        String sql = "INSERT INTO NhanVien (username, password, hoten, sodienthoai, ngaysinh) VALUES (?, ?, ?, ?, ?)";
+    public Boolean ThemThongTinNhanVien(String username, String password, String hoten, String gioitinh,String sodienthoai, String ngaysinh) {
+        String sql = "INSERT INTO NhanVien (username, password, hoten, gioitinh, sodienthoai, ngaysinh) VALUES (?, ?, ?, ?, ?,?)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,username);
             pstmt.setString(2, password);
             pstmt.setString(3, hoten);
-            pstmt.setString(4, sodienthoai);
+            pstmt.setString(4, gioitinh);
+            pstmt.setString(5, sodienthoai);
             Date date = Date.valueOf(ngaysinh);
-            pstmt.setDate(5, date);
+            pstmt.setDate(6, date);
             pstmt.executeUpdate();
             return true;
         }catch (Exception e){
@@ -49,6 +50,25 @@ public class NhanVien {
             pstmt.executeUpdate();
             return true;
         }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public Boolean SuaThongTinNhanVien(String Msv, String username, String password, String hoten, String gioitinh, String sodienthoai,  String ngaysinh) {
+        String sql = "UPDATE NhanVien SET username = ?, password = ?, hoten = ?, gioitinh = ? ,sodienthoai = ?, ngaysinh = ? WHERE maNV = ?";
+        try{
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setString(1,username);
+            psmt.setString(2, password);
+            psmt.setString(3, hoten);
+            psmt.setString(4, gioitinh);
+            psmt.setString(5, sodienthoai);
+            Date date = Date.valueOf(ngaysinh);
+            psmt.setDate(6, date);
+            psmt.setString(7, Msv);
+            psmt.executeUpdate();
+            return true;
+        }catch(Exception e){
             e.printStackTrace();
         }
         return false;

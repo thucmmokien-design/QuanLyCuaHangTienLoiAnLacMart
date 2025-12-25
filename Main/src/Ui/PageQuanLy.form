@@ -2,87 +2,71 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Ui.PageQuanLy">
   <grid id="27dc6" binding="pnStackNhanVien" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="23" y="13" width="911" height="412"/>
+      <xy x="23" y="13" width="911" height="421"/>
     </constraints>
     <properties>
-      <preferredSize width="800" height="500"/>
+      <preferredSize width="1000" height="600"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="72b8d" layout-manager="GridLayoutManager" row-count="9" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
+      <grid id="72b8d" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="20" left="0" bottom="0" right="0"/>
         <constraints border-constraint="West"/>
         <properties/>
         <border type="none"/>
         <children>
           <component id="537c2" class="javax.swing.JButton" binding="button_nhanvien">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-9854747"/>
               <enabled value="true"/>
-              <foreground color="-1907233"/>
+              <foreground color="-16777216"/>
               <margin top="0" left="0" bottom="0" right="0"/>
+              <selected value="false"/>
               <text value="Nhân Viên"/>
             </properties>
             <clientProperties>
               <html.disable class="java.lang.Boolean" value="false"/>
             </clientProperties>
           </component>
-          <component id="111de" class="javax.swing.JButton" binding="button_calam">
+          <component id="d25c1" class="javax.swing.JButton" binding="button_thongke">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-9854747"/>
               <enabled value="true"/>
-              <text value="Ca Làm"/>
+              <foreground color="-16777216"/>
+              <text value="Thông Kê"/>
             </properties>
           </component>
           <component id="f9011" class="javax.swing.JButton" binding="button_luong">
             <constraints>
-              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-9854747"/>
               <enabled value="true"/>
+              <foreground color="-16777216"/>
               <text value="Lương"/>
             </properties>
           </component>
-          <component id="d25c1" class="javax.swing.JButton" binding="button_thongke">
+          <component id="111de" class="javax.swing.JButton" binding="button_calam">
             <constraints>
-              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-9854747"/>
               <enabled value="true"/>
-              <text value="Thông Kê"/>
+              <foreground color="-16777216"/>
+              <text value="Ca Làm"/>
             </properties>
           </component>
-          <vspacer id="1e36f">
-            <constraints>
-              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <vspacer id="c5b88">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <vspacer id="c22f2">
+          <vspacer id="1ab7a">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <vspacer id="b307b">
-            <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <vspacer id="8acff">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
         </children>
@@ -92,17 +76,19 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="919a9" binding="jpanel_quanlynhanvien" layout-manager="GridLayoutManager" row-count="8" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="919a9" binding="jpanel_quanlynhanvien" layout-manager="GridLayoutManager" row-count="13" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <card name="Card1"/>
             </constraints>
-            <properties/>
+            <properties>
+              <preferredSize width="2000" height="500"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="7a10" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Password"/>
@@ -110,7 +96,7 @@
               </component>
               <component id="5b239" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Username"/>
@@ -126,7 +112,7 @@
               </component>
               <component id="cd7e9" class="javax.swing.JTextField" binding="textField_username">
                 <constraints>
-                  <grid row="1" column="2" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="2" column="2" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -134,7 +120,7 @@
               </component>
               <component id="d8aed" class="javax.swing.JTextField" binding="textField_password">
                 <constraints>
-                  <grid row="2" column="2" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="3" column="2" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                 </constraints>
@@ -142,7 +128,7 @@
               </component>
               <component id="40487" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="HoVaTen"/>
@@ -150,7 +136,7 @@
               </component>
               <component id="9b4e0" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="SDT"/>
@@ -158,18 +144,10 @@
               </component>
               <vspacer id="265da">
                 <constraints>
-                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="8" column="1" row-span="4" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
               <component id="96bab" class="javax.swing.JTextField" binding="textField_hoten">
-                <constraints>
-                  <grid row="3" column="2" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="2068" class="javax.swing.JTextField" binding="textField_sdt">
                 <constraints>
                   <grid row="4" column="2" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -177,9 +155,17 @@
                 </constraints>
                 <properties/>
               </component>
+              <component id="2068" class="javax.swing.JTextField" binding="textField_sdt">
+                <constraints>
+                  <grid row="5" column="2" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
               <component id="64c19" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Ngày Sinh"/>
@@ -187,7 +173,7 @@
               </component>
               <component id="b5350" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Ngày"/>
@@ -195,7 +181,7 @@
               </component>
               <component id="fb652" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Tháng"/>
@@ -203,19 +189,19 @@
               </component>
               <component id="bb01e" class="javax.swing.JComboBox" binding="comboBox_ngay">
                 <constraints>
-                  <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
               <component id="1691c" class="javax.swing.JComboBox" binding="comboBox_thang">
                 <constraints>
-                  <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
               <component id="af546" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="5" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="7" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Năm"/>
@@ -223,13 +209,13 @@
               </component>
               <component id="b8c8" class="javax.swing.JComboBox" binding="comboBox_nam">
                 <constraints>
-                  <grid row="5" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
               <component id="8c549" class="javax.swing.JButton" binding="button_them">
                 <constraints>
-                  <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="8" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Thêm"/>
@@ -237,7 +223,7 @@
               </component>
               <component id="69ff" class="javax.swing.JButton" binding="button_xoa">
                 <constraints>
-                  <grid row="6" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="8" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Xóa"/>
@@ -245,7 +231,7 @@
               </component>
               <component id="b2e95" class="javax.swing.JButton" binding="button_update">
                 <constraints>
-                  <grid row="6" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="8" column="6" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Sửa"/>
@@ -253,7 +239,7 @@
               </component>
               <scrollpane id="4f05d" binding="scrollPane">
                 <constraints>
-                  <grid row="1" column="0" row-span="7" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="11" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
@@ -264,6 +250,54 @@
                   </component>
                 </children>
               </scrollpane>
+              <component id="e5afb" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Mnv"/>
+                </properties>
+              </component>
+              <component id="27e58" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Giới Tính"/>
+                </properties>
+              </component>
+              <component id="68882" class="javax.swing.JComboBox" binding="comboBox_giotinh">
+                <constraints>
+                  <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+              </component>
+              <hspacer id="79579">
+                <constraints>
+                  <grid row="8" column="8" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <component id="a988c" class="javax.swing.JLabel" binding="label_id">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="962ce" class="javax.swing.JButton" binding="button_clear">
+                <constraints>
+                  <grid row="9" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Clear"/>
+                </properties>
+              </component>
+              <vspacer id="e8187">
+                <constraints>
+                  <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
           <grid id="ca09" binding="jpanel_quanlycalam" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

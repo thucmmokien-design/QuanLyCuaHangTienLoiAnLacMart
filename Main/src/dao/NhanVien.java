@@ -24,17 +24,18 @@ public class NhanVien {
         }
         return null;
     }
-    public Boolean ThemThongTinNhanVien(String username, String password, String hoten, String gioitinh,String sodienthoai, String ngaysinh) {
-        String sql = "INSERT INTO NhanVien (username, password, hoten, gioitinh, sodienthoai, ngaysinh) VALUES (?, ?, ?, ?, ?,?)";
+    public Boolean ThemThongTinNhanVien(String mnv, String username, String password, String hoten, String gioitinh,String sodienthoai, String ngaysinh) {
+        String sql = "INSERT INTO NhanVien (maNV, username, password, hoten, gioitinh, sodienthoai, ngaysinh) VALUES (?, ?, ?, ?, ?, ?,?)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1,username);
-            pstmt.setString(2, password);
-            pstmt.setString(3, hoten);
-            pstmt.setString(4, gioitinh);
-            pstmt.setString(5, sodienthoai);
+            pstmt.setString(1, mnv);
+            pstmt.setString(2,username);
+            pstmt.setString(3, password);
+            pstmt.setString(4, hoten);
+            pstmt.setString(5, gioitinh);
+            pstmt.setString(6, sodienthoai);
             Date date = Date.valueOf(ngaysinh);
-            pstmt.setDate(6, date);
+            pstmt.setDate(7, date);
             pstmt.executeUpdate();
             return true;
         }catch (Exception e){
@@ -55,7 +56,7 @@ public class NhanVien {
         return false;
     }
     public Boolean SuaThongTinNhanVien(String Msv, String username, String password, String hoten, String gioitinh, String sodienthoai,  String ngaysinh) {
-        String sql = "UPDATE NhanVien SET username = ?, password = ?, hoten = ?, gioitinh = ? ,sodienthoai = ?, ngaysinh = ? WHERE maNV = ?";
+        String sql = "UPDATE NhanVien SET username=?, password=?, hoten=?, gioitinh=?, sodienthoai=?, ngaysinh=? WHERE maNV=?";
         try{
             PreparedStatement psmt = conn.prepareStatement(sql);
             psmt.setString(1,username);
@@ -66,8 +67,10 @@ public class NhanVien {
             Date date = Date.valueOf(ngaysinh);
             psmt.setDate(6, date);
             psmt.setString(7, Msv);
-            psmt.executeUpdate();
-            return true;
+            int rowsAffected= psmt.executeUpdate();
+            if (rowsAffected > 0){
+                return true;
+            };
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -87,5 +90,19 @@ public class NhanVien {
             e.printStackTrace();
         }
         return false;
+    }
+    public String layTenNhanVienTheoMa(String maNV) {
+        String sql = "SELECT hoten FROM NhanVien WHERE maNV = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, maNV);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString("hoten");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

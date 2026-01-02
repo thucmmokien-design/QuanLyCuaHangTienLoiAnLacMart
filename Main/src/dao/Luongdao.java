@@ -90,4 +90,31 @@ public class Luongdao {
         }
         return false;
     }
+    public String layTenNhanVienTheoMa(String maNV) {
+        String sql = "SELECT hoTen FROM Luong WHERE maNV = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, maNV);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("hoTen");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+    public ResultSet layThongSoLuongNhanVien(String maNV) {
+        String sql = "SELECT * FROM Luong WHERE maNV = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, maNV);
+            return ps.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
+

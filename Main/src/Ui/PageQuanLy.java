@@ -7,6 +7,8 @@ import java.sql.*;
 import dao.CaLamdao;
 import dao.Luongdao;
 import dao.NhanVien;
+import dao.Thongbaodao;
+
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -27,6 +29,7 @@ public class PageQuanLy extends JFrame {
     private DefaultTableModel modelnhanvien;
     private DefaultTableModel modelCaLam;
     private DefaultTableModel modelLuong;
+    private DefaultTableModel modelThongke;
     private JTable table_nhanvien;
     private JTextField textField_username;
     private JTextField textField_password;
@@ -65,17 +68,18 @@ public class PageQuanLy extends JFrame {
     private JTextField textField_manhanvien;
     private JLabel jlabel_hotencalam;
     private JLabel id_calam;
-    private JTable table1;
-    private JComboBox comboBox1;
-    private JButton xuấtBáoCáoButton;
+    private JTable table_thongke;
     private JLabel jlabel_hetenluong;
     private JLabel label_mnv;
     private JLabel label_tongsohlam1ngay;
+    private JTextField textField_LoiNhanNhu;
+    private JButton button_xuatphieuluong;
+    private JComboBox comboBox_nhanvienthongke;
+    private JLabel Label_tenthongke;
+    private JLabel Label_hotenthongke;
     private JPanel panel2;
     public PageQuanLy() {
         setContentPane(pnStackNhanVien);
-        NhanVien nv = new  NhanVien();
-
         CardLayout cl = new CardLayout();
         jpanel_stack.setLayout(cl);
         jpanel_stack.add(jpanel_quanlynhanvien, "nhanvien");
@@ -88,6 +92,7 @@ public class PageQuanLy extends JFrame {
         button_calam.addActionListener(e -> {
             cl.show(jpanel_stack, "calamviec");
             LoadTbale_calam();
+            Loadcombox();
         });
         button_luong.addActionListener(e -> {
             cl.show(jpanel_stack, "luong");
@@ -95,6 +100,8 @@ public class PageQuanLy extends JFrame {
         });
         button_thongke.addActionListener(e -> {
             cl.show(jpanel_stack, "thongke");
+            LoadTable_ThongBao();
+            Loadcombox();
         });
         button_them.addActionListener(e -> {
             themnhanvien();
@@ -126,16 +133,45 @@ public class PageQuanLy extends JFrame {
         });
         button_loadluong.addActionListener(e ->{
             LoadTable_Luong_2();
+            clearForm();
         });
         button_xoaluong.addActionListener(e ->{
             XoaLuong();
+            clearForm();
         });
+        button_xuatphieuluong.addActionListener(e ->{
+            LoadTable_Thongbaosaukhixuatfile();
+        });
+        NhanVien nv = new  NhanVien();
         comboBox_chonnhanvien.addActionListener(e -> {
-            String maNV = comboBox_chonnhanvien.getSelectedItem().toString();
+            Object item = comboBox_chonnhanvien.getSelectedItem();
+            if (item == null) return;
+
+            String maNV = item.toString();
             String hoten = nv.layTenNhanVienTheoMa(maNV);
             jlabel_hotencalam.setText(hoten);
         });
+        Luongdao l = new Luongdao();
+        comboBox_nhanvienthongke.addActionListener(e -> {
+            Object item = comboBox_nhanvienthongke.getSelectedItem();
+            if (item == null) return;
+            String maNV = item.toString();
+            String hoten_thongke = l.layTenNhanVienTheoMa(maNV);
+            Label_hotenthongke.setText(hoten_thongke);
+        });
+        comboBox_giotinh.addItem("Nam");
+        comboBox_giotinh.addItem("Nu");
+        for (int i = 1; i <= 31; i++) {
+            comboBox_ngay.addItem(i);
+        }
 
+        for (int i = 1; i <= 12; i++) {
+            comboBox_thang.addItem(i);
+        }
+
+        for (int i = 1970; i <= 2025; i++) {
+            comboBox_nam.addItem(i);
+        }
         textField_manhanvien.setEditable(false);
         table_nhanvien.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -155,6 +191,16 @@ public class PageQuanLy extends JFrame {
                 clickTableLuong();
             }
         });
+        LoadTable();
+        setTitle("Home_QuanLy");
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+    private void Loadcombox(){
+        comboBox_chonnhanvien.removeAllItems();
+        NhanVien nv = new  NhanVien();
         ResultSet rs = nv.LayThongTinNhanVien();
         try {
             while(rs.next()) {
@@ -163,30 +209,16 @@ public class PageQuanLy extends JFrame {
         }catch (Exception e){
             e.printStackTrace();
         }
-        String maNV = comboBox_chonnhanvien.getSelectedItem().toString();
-        String namenhavien = nv.layTenNhanVienTheoMa(maNV);
-        jlabel_hotencalam.setText(namenhavien);
-
-        comboBox_giotinh.addItem("Nam");
-        comboBox_giotinh.addItem("Nu");
-
-        for (int i = 1; i <= 31; i++) {
-            comboBox_ngay.addItem(i);
+        comboBox_nhanvienthongke.removeAllItems();
+        Luongdao l = new Luongdao();
+        ResultSet rss = l.LayThongTinLuong();
+        try {
+            while(rss.next()) {
+                comboBox_nhanvienthongke.addItem(rss.getString("maNV"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
-
-        for (int i = 1; i <= 12; i++) {
-            comboBox_thang.addItem(i);
-        }
-
-        for (int i = 1970; i <= 2025; i++) {
-            comboBox_nam.addItem(i);
-        }
-        LoadTable();
-        setTitle("Home_QuanLy");
-        pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     private void LoadTable() {
         textField_manhanvien.setEditable(true);
@@ -261,16 +293,12 @@ public class PageQuanLy extends JFrame {
                 return false;
             }
         };
-
         table_luong.setModel(modelLuong);
         table_luong.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table_luong.getTableHeader().setReorderingAllowed(false);
-
         CaLamdao cl = new CaLamdao();
         Luongdao l = new Luongdao();
-
         ResultSet rs = cl.LayTongGioLamTheoNhanVien();
-
         try {
             while (rs != null && rs.next()) {
 
@@ -281,14 +309,12 @@ public class PageQuanLy extends JFrame {
                 modelLuong.addRow(new Object[]{
                         maNV,
                         hoTen,
-                        tongGio,   // ✅ đã có tổng giờ
+                        tongGio,
                         null,
                         null,
                         null,
                         null
                 });
-
-                // insert sang bảng Luong (chỉ 1 lần / MaNV)
                 l.ThemThongTin(maNV, hoTen, tongGio);
             }
         } catch (Exception e) {
@@ -330,6 +356,87 @@ public class PageQuanLy extends JFrame {
             e.printStackTrace();
         }
     }
+    private void LoadTable_ThongBao(){
+        String[] column = {"MaNV", "HoTen", "Thuong", "TongLuongThang", "Loi Nhan"};
+        modelThongke =  new DefaultTableModel(column, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        table_thongke.setModel(modelThongke);
+        table_thongke.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table_thongke.getTableHeader().setReorderingAllowed(false);
+        Thongbaodao tb = new Thongbaodao();
+        ResultSet rsThongBao = tb.LayThongKeLuong();
+        try{
+            while (rsThongBao.next()) {
+                modelThongke.addRow(new Object[]{
+                        rsThongBao.getString("manv"),
+                        rsThongBao.getString("hoten"),
+                        rsThongBao.getFloat("thuong"),
+                        rsThongBao.getFloat("TongLuongThang"),
+                        rsThongBao.getString("loinhan")
+                });
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+    private void LoadTable_Thongbaosaukhixuatfile() {
+
+        Object item = comboBox_nhanvienthongke.getSelectedItem();
+        if (item == null) return;
+
+        String maNV = item.toString();
+        Luongdao ld = new Luongdao();
+        ResultSet rsLuong = ld.layThongSoLuongNhanVien(maNV);
+
+        try {
+            if (rsLuong.next()) {
+
+                String manv = rsLuong.getString("maNV");
+                String hoTen = rsLuong.getString("hoten");
+                float thuong = rsLuong.getFloat("thuong");
+                Object luongNgay = rsLuong.getObject("LuongNgay");
+                Object tongLuong = rsLuong.getObject("tongluong");
+
+                if (luongNgay == null || tongLuong == null) {
+                    JOptionPane.showMessageDialog(this, "Chưa tính tổng lương!");
+                    return;
+                }
+                String loiNhan = textField_LoiNhanNhu.getText();
+                String message = "Họ Tên: " + hoTen + " | " + "Thưởng: " + String.format("%,.0f VNĐ", thuong) + " | " + "Tổng lương: " + String.format("%,.0f VNĐ", tongLuong) + " | " + "Lời nhắn: " + loiNhan;
+                JOptionPane.showMessageDialog(this, message);
+                Thongbaodao tb = new Thongbaodao();
+                tb.ThemThongKeLuong(manv, hoTen, thuong,
+                        ((Number) tongLuong).floatValue(), loiNhan);
+                String[] column = {
+                        "MaNV", "HoTen", "Thuong", "TongLuongThang", "Loi Nhan"
+                };
+                modelThongke = new DefaultTableModel(column, 0) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
+                table_thongke.setModel(modelThongke);
+                ResultSet rsThongBao = tb.LayThongKeLuong();
+                while (rsThongBao.next()) {
+                    modelThongke.addRow(new Object[]{
+                            rsThongBao.getString("manv"),
+                            rsThongBao.getString("hoten"),
+                            rsThongBao.getFloat("thuong"),
+                            rsThongBao.getFloat("TongLuongThang"),
+                            rsThongBao.getString("loinhan")
+                    });
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private void clearForm() {
         textField_manhanvien.setEditable(true);
@@ -348,6 +455,12 @@ public class PageQuanLy extends JFrame {
         textField_gioketthuc.setText("");
         jlabel_hotencalam.setText("");
         id_calam.setText("");
+        label_mnv.setText("");
+        jlabel_hetenluong.setText("");
+        label_tongsohlam1ngay.setText("");
+        textField_tongngaylam.setText("");
+        textField_luoncoban.setText("");
+        textField_thuongthem.setText("");
     }
     private String getNgaySinhFromComboBox() {
         int ngay  = (int) comboBox_ngay.getSelectedItem();
@@ -560,7 +673,7 @@ public class PageQuanLy extends JFrame {
         textField_username.setText(username);
         textField_password.setText(password);
         textField_hoten.setText(hoten);
-        comboBox_ngay.setSelectedItem(gioitinh);
+        comboBox_giotinh.setSelectedItem(gioitinh);
         textField_sdt.setText(sdt);
         String[] parts = ngaysinh.split("-");
         int nam   = Integer.parseInt(parts[0]);
@@ -591,28 +704,21 @@ public class PageQuanLy extends JFrame {
     private void clickTableLuong() {
         int row = table_luong.getSelectedRow();
         if (row == -1) return;
-
         String maNV = String.valueOf(modelLuong.getValueAt(row, 0));
         String hoTen = String.valueOf(modelLuong.getValueAt(row, 1));
-
         Object tg = modelLuong.getValueAt(row, 2);
         Object lg = modelLuong.getValueAt(row, 3);
         Object tn = modelLuong.getValueAt(row, 4);
         Object th = modelLuong.getValueAt(row, 5);
         Object tl = modelLuong.getValueAt(row, 6);
-
         String tongGio = tg == null ? "" : tg.toString();
         String luongTheoGio = lg == null ? "" : lg.toString();
         String tongNgayLam = tn == null ? "" : tn.toString();
         String thuong = th == null ? "" : th.toString();
-
-        // ✅ LẤY SỐ CHUẨN
         double tongLuongSo = 0;
         if (tl instanceof Number) {
             tongLuongSo = ((Number) tl).doubleValue();
         }
-
-        // ✅ FORMAT VND
         NumberFormat vn = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
         String tongLuongVND = vn.format(tongLuongSo);
 
@@ -623,9 +729,5 @@ public class PageQuanLy extends JFrame {
         textField_luoncoban.setText(luongTheoGio);
         textField_thuongthem.setText(thuong);
         label_tongluong.setText(tongLuongVND);
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }
